@@ -19,7 +19,7 @@ from picamera2.outputs import FileOutput
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description="Picamera2 MJPEG streaming demo with options")
-parser.add_argument("--resolution", type=str, help="Video resolution in WIDTHxHEIGHT format (default: 640x480)", default="640x480")
+parser.add_argument("--resolution", type=str, help="Video resolution in WIDTHxHEIGHT format (default: 4608x2592)", default="4608x2592")
 parser.add_argument("--edge_detection", action="store_true", help="Enable edge detection")
 args = parser.parse_args()
 
