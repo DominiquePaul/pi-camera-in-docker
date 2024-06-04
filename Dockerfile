@@ -1,8 +1,8 @@
-FROM debian:bullseye
+FROM debian:bookworm
 
 RUN apt update && apt install -y --no-install-recommends gnupg
 
-RUN echo "deb http://archive.raspberrypi.org/debian/ bullseye main" > /etc/apt/sources.list.d/raspi.list \
+RUN echo "deb http://archive.raspberrypi.org/debian/ bookworm main" > /etc/apt/sources.list.d/raspi.list \
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 82B129927FA3303E
 
 RUN apt update && apt -y upgrade
@@ -25,7 +25,8 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# TODO: fix issue with "--break-system-packages" flag
+RUN pip install --break-system-packages --no-cache-dir -r requirements.txt
 
 # Copy the Python files
 COPY pi_camera_in_docker /app/pi_camera_in_docker
